@@ -1335,10 +1335,6 @@ body.light-mode .apps-row::-webkit-scrollbar-thumb {
 
 
 <div id="app-details-container" style="display: none; width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px;">
-    <button onclick="closeAppDetails()" style="background: rgba(255,255,255,0.1); border: 1px solid #374151; color: white; padding: 10px 20px; border-radius: 20px; cursor: pointer; margin-bottom: 20px; font-weight: bold; display: flex; align-items: center; gap: 8px;">
-        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-        Back to Apps
-    </button>
     <div class="app-details-card" style="display: flex; flex-direction: column; md:flex-row; gap: 30px; background: rgba(0, 0, 0, 0.8); border: 1px solid #374151; padding: 30px; border-radius: 20px;">
         <div style="display: flex; gap: 20px; align-items: center;">
             <img id="detail-app-icon" src="" alt="App Icon" style="width: 120px; height: 120px; border-radius: 25px; object-fit: cover; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
@@ -1363,6 +1359,10 @@ body.light-mode .apps-row::-webkit-scrollbar-thumb {
             <div id="detail-app-error" style="color: #ef4444; font-size: 14px; margin-top: 10px; display: none; font-weight: 500;"></div>
         </div>
     </div>
+    <button onclick="closeAppDetails()" style="background: rgba(255,255,255,0.1); border: 1px solid #374151; color: white; padding: 10px 20px; border-radius: 20px; cursor: pointer; margin-top: 20px; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        Back to Apps
+    </button>
 </div>
 <style>
 body.light-mode #app-details-container button {
@@ -1505,6 +1505,10 @@ function closeAppDetails() {
         <div class="app-card" onclick="openAppDetails('Plants', 'https://i.ibb.co.com/RkSYSRdF/img-plants.jpg', 'https://anim-e-0.hasanfreefireid0077.workers.dev', 'Hasan0077')" style="cursor: pointer;">
             <img src="https://i.ibb.co.com/RkSYSRdF/img-plants.jpg" alt="Plants" class="app-icon" style="object-fit: cover;">
             <div class="app-name">Plants</div>
+        </div>
+        <div class="app-card" onclick="openAppDetails('Cloud Tv', 'https://pub-86eaa0b24bd14f45a6214adb6bd3f818.r2.dev/Photos/713Ij7VTEyL.png', 'https://pub-86eaa0b24bd14f45a6214adb6bd3f818.r2.dev/Apps/cloudtv%20.apk', 'Cloud0077')" style="cursor: pointer;">
+            <img src="https://pub-86eaa0b24bd14f45a6214adb6bd3f818.r2.dev/Photos/713Ij7VTEyL.png" alt="Cloud Tv" class="app-icon" style="object-fit: cover;">
+            <div class="app-name">Cloud Tv</div>
         </div>
     </div>
 </div>
