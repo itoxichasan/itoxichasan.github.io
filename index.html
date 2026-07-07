@@ -1089,6 +1089,79 @@ body.light-mode .apps-row::-webkit-scrollbar-thumb {
     }
 }
 </style>
+<section id="home-loader-section" class="home-loader-section" style="display: flex; justify-content: center; align-items: center; padding: 40px 0; width: 100%;">
+  <style>
+    /* From Uiverse.io by SelfMadeSystem */ 
+    .home-loader-section .absolute {
+      position: absolute;
+    }
+
+    .home-loader-section .inline-block {
+      display: inline-block;
+    }
+
+    .home-loader-section .loader {
+      display: flex;
+      margin: 0.25em 0;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .home-loader-section .w-2 {
+      width: 0.5em;
+    }
+
+    .home-loader-section .dash {
+      stroke-dasharray: 100 20;
+      animation: dashOffset 4s linear infinite;
+    }
+
+    @keyframes dashOffset {
+      0% {
+        stroke-dashoffset: 120;
+      }
+
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
+
+  <div class="loader">
+    <svg height="0" width="0" viewBox="0 0 64 64" class="absolute">
+      <defs class="s-xJBuHA073rTt" xmlns="http://www.w3.org/2000/svg">
+        <linearGradient class="s-xJBuHA073rTt" gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="loader-grad-b">
+          <stop class="s-xJBuHA073rTt" stop-color="#973BED"></stop>
+          <stop class="s-xJBuHA073rTt" stop-color="#007CFF" offset="1"></stop>
+        </linearGradient>
+        <linearGradient class="s-xJBuHA073rTt" gradientUnits="userSpaceOnUse" y2="0" x2="0" y1="64" x1="0" id="loader-grad-c">
+          <stop class="s-xJBuHA073rTt" stop-color="#FFC800"></stop>
+          <stop class="s-xJBuHA073rTt" stop-color="#F0F" offset="1"></stop>
+          <animateTransform repeatCount="indefinite" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" keyTimes="0; 0.125; 0.25; 0.375; 0.5; 0.625; 0.75; 0.875; 1" dur="8s" values="0 32 32;-270 32 32;-270 32 32;-540 32 32;-540 32 32;-810 32 32;-810 32 32;-1080 32 32;-1080 32 32" type="rotate" attributeName="gradientTransform"></animateTransform>
+        </linearGradient>
+        <linearGradient class="s-xJBuHA073rTt" gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="loader-grad-d">
+          <stop class="s-xJBuHA073rTt" stop-color="#00E0ED"></stop>
+          <stop class="s-xJBuHA073rTt" stop-color="#00DA72" offset="1"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 80" width="100%" height="80" style="max-width: 450px;">
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="36" font-family="Arial, sans-serif" font-weight="900" fill="none" stroke-width="2">
+        <tspan stroke="url(#loader-grad-b)" class="dash">T</tspan>
+        <tspan stroke="url(#loader-grad-c)" class="dash">O</tspan>
+        <tspan stroke="url(#loader-grad-d)" class="dash">X</tspan>
+        <tspan stroke="url(#loader-grad-b)" class="dash">I</tspan>
+        <tspan stroke="url(#loader-grad-c)" class="dash">C</tspan>
+        <tspan xml:space="preserve">  </tspan>
+        <tspan stroke="url(#loader-grad-d)" class="dash">H</tspan>
+        <tspan stroke="url(#loader-grad-b)" class="dash">A</tspan>
+        <tspan stroke="url(#loader-grad-c)" class="dash">S</tspan>
+        <tspan stroke="url(#loader-grad-d)" class="dash">A</tspan>
+        <tspan stroke="url(#loader-grad-b)" class="dash">N</tspan>
+      </text>
+    </svg>
+  </div>
+</section>
 <div id="apps-container" style="display: none; width: 100%; max-width: 1000px; margin: 0 auto;">
     <!-- উপরে ডানে APPS আইকন -->
     <div style="display: flex; justify-content: flex-end; padding: 0 20px; margin-top: 20px;">
@@ -1414,6 +1487,8 @@ function openAppDetails(name, iconSrc, downloadUrl, expectedPassword) {
     
     // Hide main home sections
     document.querySelectorAll('main.main-site > section, #watch-history-widget').forEach(el => el.style.display = 'none');
+    const homeLoader = document.getElementById('home-loader-section');
+    if (homeLoader) homeLoader.style.display = 'none';
 
     // Show app details container
     const detailsContainer = document.getElementById('app-details-container');
@@ -1798,14 +1873,17 @@ function toggleGeneric(id, e) {
     if (e) e.preventDefault();
     const container = document.getElementById(id);
     const mainContent = document.querySelectorAll('main.main-site > section, #watch-history-widget');
+    const homeLoader = document.getElementById('home-loader-section');
     
     if (container.style.display === 'none') {
         hideAllCustomContainers();
         container.style.display = 'block';
         mainContent.forEach(el => el.style.display = 'none');
+        if (homeLoader) homeLoader.style.display = 'none';
     } else {
         container.style.display = 'none';
         mainContent.forEach(el => el.style.display = '');
+        if (homeLoader) homeLoader.style.display = 'flex';
     }
 }
 
@@ -1863,6 +1941,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (el) el.style.display = 'none';
             });
             document.querySelectorAll('main.main-site > section, #watch-history-widget').forEach(el => el.style.display = '');
+            const homeLoader = document.getElementById('home-loader-section');
+            if (homeLoader) homeLoader.style.display = 'flex';
             window.scrollTo(0,0);
         }
     };

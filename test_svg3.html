@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { background: #111; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+.dash {
+  stroke-dasharray: 80 180;
+  animation: dashOffset 3s linear infinite;
+}
+@keyframes dashOffset {
+  0% { stroke-dashoffset: 260; }
+  100% { stroke-dashoffset: 0; }
+}
+</style>
+</head>
+<body>
+  <div class="loader">
+    <svg height="0" width="0" viewBox="0 0 64 64" style="position:absolute;">
+      <defs>
+        <linearGradient y2="2" x2="0" y1="62" x1="0" id="grad-b">
+          <stop stop-color="#973BED"></stop>
+          <stop stop-color="#007CFF" offset="1"></stop>
+        </linearGradient>
+        <linearGradient y2="0" x2="0" y1="64" x1="0" id="grad-c">
+          <stop stop-color="#FFC800"></stop>
+          <stop stop-color="#F0F" offset="1"></stop>
+        </linearGradient>
+        <linearGradient y2="2" x2="0" y1="62" x1="0" id="grad-d">
+          <stop stop-color="#00E0ED"></stop>
+          <stop stop-color="#00DA72" offset="1"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 80" width="450" height="80">
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="44" font-family="Arial, sans-serif" font-weight="900" fill="none" stroke-width="2">
+        <tspan stroke="url(#grad-b)" class="dash">T</tspan>
+        <tspan stroke="url(#grad-c)" class="dash">O</tspan>
+        <tspan stroke="url(#grad-d)" class="dash">X</tspan>
+        <tspan stroke="url(#grad-b)" class="dash">I</tspan>
+        <tspan stroke="url(#grad-c)" class="dash">C</tspan>
+        <tspan> </tspan>
+        <tspan stroke="url(#grad-d)" class="dash">H</tspan>
+        <tspan stroke="url(#grad-b)" class="dash">A</tspan>
+        <tspan stroke="url(#grad-c)" class="dash">S</tspan>
+        <tspan stroke="url(#grad-d)" class="dash">A</tspan>
+        <tspan stroke="url(#grad-b)" class="dash">N</tspan>
+      </text>
+    </svg>
+  </div>
+</body>
+</html>
